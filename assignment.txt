@@ -1,0 +1,298 @@
+9.1>> Seems easy to me. Didnt solve it.
+
+9.2>> 
+
+>>>To print words not containing e and calculating the percentage of the words.
+
+
+@@@
+fin=open(r"C:\Users\Parassingh\Desktop\words.txt")
+def has_no_e():
+    count=0
+    count1=0
+    for i in fin:
+        count=count+1
+        if 'e' not in i:
+            print(i)
+            count1=count1+1
+    print(count1/count*100)
+has_no_e()
+
+
+9.3>>
+
+>>> To take forbidden letters from the user and print the words that dont contain the forbidden letters using the file.
+
+
+@@@
+fin=open(r"C:\Users\Parassingh\Desktop\words.txt")
+def forbidden(s):
+
+    for i in fin:
+        count = 0
+        for k in range(0,len(s)):
+            if s[k] in i:
+                count=count+1
+                break
+        if count==0:
+            print(i)
+
+
+s=input('Enter the forbidden letters ')
+forbidden(s)
+
+
+9.4>> 
+
+>>> To take a word and letter from user and then print True only if the words is made up of all the letters sent by the user.
+
+@@@
+def words(word,stri):
+    count=0
+    for i in range(0,len(word)):
+        if word[i] in stri:
+            count=count+1
+
+    if count >= (len(stri)):
+        print("TRueee")
+
+words('paras','rpas')
+
+
+9.5>>
+
+>>> To take letters and a word from the user and to print True if the letters appear in the word atleast once. Else print word dont appear.
+
+@@@
+def words(word,stri):
+    count=0
+    for i in range(0,len(stri)):
+        if stri[i] in word:
+            count=count+1
+
+    if count == (len(stri)):
+        print("TRueee")
+    else:
+        print('Given letters not used minimum once in the word ')
+words('parassingh','pras')
+
+
+9.6>>
+
+>>> To check if the given word is in alphabetical order or not.
+
+@@@
+def is_abcd(word):
+    global counter1
+    for i in range(0,len(word)):
+        if word[i] in stri:
+            counter(i,word)
+
+    if counter1 == (len(word)):
+        print("Its in alphabetical order")
+    else:
+        print("Its not in alphabetical order ")
+
+
+def counter(i,word):
+    global counter1
+    if stri.find(word[i]) > stri.find(word[i-1]):
+        counter1=counter1+1
+
+counter1=1
+stri='abcdefghijklmnopqrstuvwxyz'
+is_abcd('xyz')
+
+
+9.7>>
+
+
+>>> To check whether the word has three consecutive double letters.
+
+@@@
+def check(s):
+    counter = 0
+    i=0
+    while i<(len(s)-1):
+        if s[i]==s[i+1]:
+            counter=counter+1
+            if counter==3:
+                return True
+            i=i+2
+        else:
+            i=i+1
+
+
+i=input("Enter the word ")
+print("The word has three consecutive letters "+str(check(i)))
+
+
+9.8>> That was a tough one!
+
+
+>>> To check for a number between 100000 and 300000 such that last 4 is palindrome, and if one is added, last 5 digits are palindrome, and if one is added, middle 4 digits are palindrome,
+and if one more is added all 6 digits are palindrome. [Think python: Exercise 9.8]
+
+@@@
+def palindrome(st,start,stop):
+    st=str(st)
+    st1=st[start:start+stop]
+    return st1==st1[::-1]
+
+def speed(s):
+    return palindrome(s,2,4) and palindrome(s+1,1,5) and palindrome(s+2,1,4) and palindrome(s+3,0,6)
+
+i=100000
+while i<999999:
+    if speed(i)==True:
+        print("The number which satisfies all the criteria is")
+        print(i)
+
+    i = i + 1
+	
+Output:
+The number which satisfies all the criteria is
+198888
+The number which satisfies all the criteria is
+199999
+
+
+9.9>> To be done.
+
+
+13.2>>
+
+>>> To read the lines from bible to calculate the unique words from bible and then then total number of words used in the book.
+
+
+@@@
+fin=open(r"C:\Users\Parassingh\Desktop\bible.txt")
+d=dict()
+def count_unique_words():
+    for i in fin:
+        word=i.strip()
+        l=word.split(" ")
+        for k in l:
+            if k not in d:
+                d[k] = 1
+            else:
+                 d[k] = d[k] + 1
+    return len(d)
+
+def count_word():
+    fin = open(r"C:\Users\Parassingh\Desktop\bible.txt")
+    count=0
+    for i in fin:
+        word=i.strip()
+        l=word.split(" ")
+        for k in l:
+            count=count+1
+    return count
+
+
+print("Total unique words ", count_unique_words(), "And total words in the book ",count_word())
+
+
+
+13.3>> Had to use the internet to see how to arrange the dictionary in descending order.
+
+>>> To read the file and print top 20 most frequently occuring word.
+
+
+@@@
+
+fin=open(r"C:\Users\Parassingh\Desktop\bible.txt")
+d=dict()
+def count_unique_words():
+    for i in fin:
+        word=i.strip()
+        l=word.split(" ")
+        for k in l:
+            if k not in d:
+                d[k] = 1
+            else:
+                 d[k] = d[k] + 1
+    return len(d)
+
+def count_word():
+    fin = open(r"C:\Users\Parassingh\Desktop\bible.txt")
+    count=0
+    for i in fin:
+        word=i.strip()
+        l=word.split(" ")
+        for k in l:
+            count=count+1
+    return count
+
+def top_20_words():
+        counter=0
+        for key,value in sorted(d.items(),key=lambda item:item[1],reverse=True):
+            print("%s: %s" % (key,value))
+            counter=counter+1
+            if counter==20:
+                break
+
+print("Total unique words ", count_unique_words(), "And total words in the book ",count_word())
+
+print(top_20_words())
+
+
+13.4>>> Had to surf the internet to find how to delete two dictionaries.
+
+
+>>> To take two files. Count the unique words in each of them and print those words that are not there in either of the files.
+
+@@@
+fin=open(r"C:\Users\Parassingh\Desktop\bible.txt")
+d=dict()
+l=dict()
+def count_unique_words():
+    for i in fin:
+        word=i.strip()
+        l=word.split(" ")
+        for k in l:
+            if k not in d:
+                d[k] = 1
+            else:
+                 d[k] = d[k] + 1
+    return len(d)
+
+def count_word():
+    fin = open(r"C:\Users\Parassingh\Desktop\bible.txt")
+    count=0
+    for i in fin:
+        word=i.strip()
+        l=word.split(" ")
+        for k in l:
+            count=count+1
+    return count
+
+def word_list():
+    fin1=open(r"C:\Users\Parassingh\Desktop\words.txt")
+    for i in fin1:
+        word=i.strip()
+        if word not in l:
+            l[word]=1
+        else:
+            l[word]=l[word]+1
+
+def top_20_words():
+        counter=0
+        for key,value in sorted(d.items(),key=lambda item:item[1],reverse=True):
+            print("%s: %s" % (key,value))
+            counter=counter+1
+            if counter==20:
+                break
+
+def compare_two_txt_file():
+    map(l.pop,d)
+    print(l)
+
+
+count_unique_words()
+word_list()
+compare_two_txt_file()
+
+
+
+
